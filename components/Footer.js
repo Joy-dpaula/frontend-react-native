@@ -3,14 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function Footer() {
     return (
         <View style={styles.footer}>
-            <Text>Footer</Text>
+            <Text>Copyright©</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     footer: {
-        flex: 3,
+        padding: 15,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'burlywood'

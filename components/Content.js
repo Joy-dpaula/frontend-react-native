@@ -1,17 +1,28 @@
 import { View, Text, StyleSheet } from 'react-native';
+import CardAccount from './Card';
 
 export default function Content() {
     return (
         <View style={styles.content}>
-            <Text>Footer</Text>
+            <Text> 
+                <CardAccount />
+                <CardAccount />
+                <CardAccount />
+                <CardAccount />
+                <CardAccount />
+                <CardAccount />
+                <CardAccount />
+                <CardAccount />
+                <CardAccount />
+            </Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     content: {
-        flex: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
+        padding: 15
+        // justifyContent: 'center',
+        // alignItems: 'center',
       }
 })

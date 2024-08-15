@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
 import Footer from './components/Footer';
 import Content from './components/Content';
 import Header from './components/Header';
+import CardAccount from './components/Card';
+
 
 export default function App() {
   return (
     // <>
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+
 
       <Header />
 
@@ -14,7 +17,7 @@ export default function App() {
 
       <Footer />
 
-    </View>
+    </ScrollView>
     // </>
   );
 }
