@@ -12,7 +12,7 @@ export default function Header() {
 
                 {/* <Image style={styles.avatar} source={require('../assets/125')} /> */}
 
-                <Text style={styles.name}>Joce de Paula</Text>
+                <Text style={styles.name}>Joyce de Paula</Text>
             </View>
 
             <MaterialCommunityIcons style={styles.menu} name="menu" size={24} color="black" />

@@ -1,15 +1,16 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 
-export default function CardAccount() {
+export default function CardAccount({ service, userName, imgUrl}){
+
     return (
         <View style={styles.card}>
 
-            <Image style={styles.logo} source="https://img.freepik.com/vetores-premium/novo-logotipo-do-twitter-novos-icones-do-twitter-novo-logotipo-do-twitter-x-2023_929078-218.jpg" />
+            <Image style={styles.logo} source={imgUrl} />
 
             <View style={styles.content}>
-                <Text style={styles.service}>X</Text>
-                <Text style={styles.username}>joycedpaula136@gmail.com</Text>
+                <Text style={styles.service}>{service}</Text>
+                <Text style={styles.username}>{userName}</Text>
             </View>
         </View>
     )
@@ -24,7 +25,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 15,
         borderRadius: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        width: "100%"
     },
     logo: {
        width: 60,
