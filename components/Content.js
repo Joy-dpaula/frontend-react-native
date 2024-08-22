@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import CardAccount from './Card';
+import CardAccount from './Card2';
 
 export default function Content() {
 
