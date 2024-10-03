@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Link} from 'expo-router';
 
 export default function Header() {
     return (
@@ -14,8 +15,8 @@ export default function Header() {
 
                 <Text style={styles.name}>Joyce de Paula</Text>
             </View>
-
-            <MaterialCommunityIcons style={styles.menu} name="menu" size={24} color="black" />
+            
+            <Link href='signup'><MaterialCommunityIcons style={styles.menu} name="plus" size={24} color="black" /></Link>
         </View>
     )
 }

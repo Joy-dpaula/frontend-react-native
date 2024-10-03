@@ -1,8 +1,11 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from 'expo-router';
 
 export default function CardAccount({ id, service, userName, imgUrl, accounts, setAccounts }) {
+
+    const navigation = useNavigation()
 
     const handleDelete = async () => {
         const response = await fetch(`http://localhost:3000/account/${id}`, {
@@ -23,9 +26,10 @@ export default function CardAccount({ id, service, userName, imgUrl, accounts, s
     }
 
     return (
+        
         <View style={styles.card}>
 
-            <Image style={styles.logo} source={imgUrl} />
+            <Pressable onPress={() => navigation.navigate('showPass')}><Image style={styles.logo} source={imgUrl} /></Pressable>
 
             <View style={styles.content}>
 

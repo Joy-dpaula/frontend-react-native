@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { View, Text, StyleSheet, TextInput} from 'react-native';
 import Button from '../components/Button';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
 
 export default function Signup() {
+
+    const navigation = useNavigation()
 
     const [txtServico, setTxtServico] = useState('')
     const [txtUsername, setTxtUsername] = useState('')
@@ -28,7 +31,7 @@ export default function Signup() {
           if(response.ok){
             const data = await response.json()
             console.log(data)
-            setAccounts([data.account, ...accounts])
+            navigation.navigate('index', {newAccount: data.account})
             return
           }
           console.log('Erro ao carregar accounts')
@@ -37,7 +40,7 @@ export default function Signup() {
     
 
     return (
-        <View>
+        <View style={styles.container}>
             <Text>Serviço:</Text>
             <TextInput
                 style={styles.input}
@@ -57,6 +60,7 @@ export default function Signup() {
                 style={styles.input}
                 onChangeText={setTxtPass}
                 value={txtPass}
+                
             />
             <Text>Logo URL:</Text>
             <TextInput
@@ -71,6 +75,9 @@ export default function Signup() {
 }
 
 const styles = StyleSheet.create({
+    container: {
+      padding: 20
+    },
     input: {
       borderWidth: 1,
       borderStyle: 'solid',
