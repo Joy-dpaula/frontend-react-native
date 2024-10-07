@@ -1,14 +1,12 @@
 
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import CardAccount from './Card';
 import { useLocalSearchParams } from 'expo-router';
 
 export default function Content() {
 
   const [accounts, setAccounts] = useState([])
-  const params = useLocalSearchParams()
-  const newAccount = params?.newAccount
 
   // console.log(newAccount)
   // console.log(accounts)

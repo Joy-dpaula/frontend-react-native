@@ -1,13 +1,10 @@
-import { StyleSheet, Text, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import Footer from '../components/Footer';
 import Content from '../components/Content';
 import Header from '../components/Header';
-// import CardAccount from '../components/Card';
-
 
 export default function Home() {
   return (
-    // <>
     <ScrollView style={styles.container}>
 
 
@@ -18,7 +15,6 @@ export default function Home() {
       <Footer />
 
     </ScrollView>
-    // </>
   );
 }
 

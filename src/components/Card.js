@@ -3,7 +3,7 @@ import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from 'expo-router';
 
-export default function CardAccount({ id, service, userName, imgUrl, accounts, setAccounts }) {
+export default function CardAccount({ id, service, userName, imgUrl, pass, accounts, setAccounts }) {
 
     const navigation = useNavigation()
 
@@ -26,10 +26,11 @@ export default function CardAccount({ id, service, userName, imgUrl, accounts, s
     }
 
     return (
-        
+
         <View style={styles.card}>
 
-            <Pressable onPress={() => navigation.navigate('showPass')}><Image style={styles.logo} source={imgUrl} /></Pressable>
+            <Pressable onPress={() => navigation.navigate('showPass', { imgUrl, pass, service, userName })}>
+                <Image style={styles.logo} source={imgUrl} /></Pressable>
 
             <View style={styles.content}>
 

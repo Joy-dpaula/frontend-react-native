@@ -1,43 +1,51 @@
-import { useState } from 'react'
-import { View, Text, StyleSheet, TextInput} from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Button from '../components/Button';
-import { useNavigation } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router'
 
 export default function ShowPass() {
 
+    const { imgUrl, service, userName, pass } = useLocalSearchParams()
+
     return (
-        <View style={styles.card}>
-
-            <Image style={styles.logo} source={imgUrl} />
-
-            <View style={styles.content}>
-
-                <Text style={styles.service}>{service}</Text>
-                <Text style={styles.username}>{userName}</Text>
-
+        <View style={{ padding: 20 }}>
+            <View style={styles.card}>
+                <Image
+                    style={styles.logo}
+                    source={imgUrl}
+                />
+                <View style={styles.content}>
+                    <Text style={styles.service}>{service}</Text>
+                    <Text style={styles.username}>{userName}</Text>
+                </View>
             </View>
-
-            <TextInput style={styles.input} value={teste} />
-
+            <View>
+                <TextInput style={styles.input} value={pass} />
+            </View>
             <Button>Copiar Senha</Button>
-
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-
     card: {
         padding: 10,
-        borderStyle: 'solid',
-        borderColor: '#EEEEEE',
-        borderWidth: 1,
         flexDirection: 'row',
         gap: 15,
         borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: "100%"
+        alignItems: 'center'
+    },
+    logo: {
+        width: 60,
+        height: 60
+    },
+    content: {
+        gap: 6
+    },
+    service: {
+        fontSize: 17
+    },
+    username: {
+        color: '#777777'
     },
     input: {
         borderWidth: 1,
@@ -47,5 +55,5 @@ const styles = StyleSheet.create({
         paddingVertical: 6,
         marginVertical: 5,
         borderRadius: 5
-      }
+    }
 })
