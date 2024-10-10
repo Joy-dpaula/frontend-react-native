@@ -14,6 +14,7 @@ export default function RootLayout() {
             <Stack.Screen name='index' options={{ headerShown: false }} />
             <Stack.Screen name='signup' options={{ title: "Cadastre-se" }} />
             <Stack.Screen name='showPass' options={{ title: "Ver senha"}} />
+            <Stack.Screen name='update' options={{ title: "Editar conta"}} />
         </Stack>
     )
 }

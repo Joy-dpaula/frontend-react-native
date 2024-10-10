@@ -3,10 +3,13 @@ import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CardAccount from './Card';
 import { useLocalSearchParams } from 'expo-router';
+import { useAccountStore } from '../stores/useAccountStore';
 
 export default function Content() {
 
-  const [accounts, setAccounts] = useState([])
+  const { accounts, setAccounts } = useAccountStore()
+
+  const newAccount = useLocalSearchParams()
 
   // console.log(newAccount)
   // console.log(accounts)

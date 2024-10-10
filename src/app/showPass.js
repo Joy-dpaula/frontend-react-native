@@ -1,27 +1,61 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native';
 import Button from '../components/Button';
-import { useLocalSearchParams } from 'expo-router'
+import { useLocalSearchParams, useRouter } from 'expo-router'
+import { useAccountStore } from '../stores/useAccountStore';
+import Ionicons from '@expo/vector-icons/Ionicons'
+import AntDesign from '@expo/vector-icons/AntDesign';;
+import { Image } from 'expo-image';
 
 export default function ShowPass() {
 
-    const { imgUrl, service, userName, pass } = useLocalSearchParams()
+    const { id } = useLocalSearchParams()
+    const { accounts, deleteAccount } = useAccountStore()
+    const router = useRouter()
+
+    const account = accounts.find((item) => item.id === +id)
+
+    const handleDelete = async () => {
+        const response = await fetch(`http://localhost:3000/account/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        if (response.ok) {
+            const data = await response.json()
+            console.log(data)
+            deleteAccount(+id)
+            router.back()
+            return
+        }
+        console.log('Erro ao carregar accounts')
+        return
+    }
+
 
     return (
         <View style={{ padding: 20 }}>
             <View style={styles.card}>
                 <Image
                     style={styles.logo}
-                    source={imgUrl}
+                    source={account?.logo_image}
                 />
                 <View style={styles.content}>
-                    <Text style={styles.service}>{service}</Text>
-                    <Text style={styles.username}>{userName}</Text>
+                    <Text style={styles.service}>{account?.service}</Text>
+                    <Text style={styles.username}>{account?.username}</Text>
                 </View>
             </View>
-            <View>
-                <TextInput style={styles.input} value={pass} />
-            </View>
+
             <Button>Copiar Senha</Button>
+
+            <View style={styles.view}>  <Pressable onPress={handleDelete} style={styles.icon}>
+                <Ionicons name="trash-bin-sharp" size={24} color="black" />
+            </Pressable>
+
+                <Pressable style={styles.update} onPress={() => router.push({ pathname: 'update', params: { id } })}>
+                    <AntDesign name="edit" size={24} color="black" />
+                </Pressable></View>
+
         </View>
     )
 }
@@ -32,6 +66,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 15,
         borderRadius: 10,
+        alignItems: 'center'
+    }, 
+    view: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      gap: 30,
+      padding: 10
+
+    },
+    update: {
+        flexDirection: 'row',
         alignItems: 'center'
     },
     logo: {

@@ -1,21 +1,23 @@
 import { useState } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Button from '../components/Button';
-import { useRouter } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useAccountStore } from '../stores/useAccountStore';
 
-export default function Signup() {
+export default function Update() {
 
-  const { addAccount } = useAccountStore()
-
+  const { updateAccount, accounts } = useAccountStore()
   const router = useRouter()
+  const { id } = useLocalSearchParams()
 
-  const [txtServico, setTxtServico] = useState('')
-  const [txtUsername, setTxtUsername] = useState('')
-  const [txtPass, setTxtPass] = useState('')
-  const [txtImgUrl, setTxtImgUrl] = useState('')
+  const account = accounts.find((item) => item.id === +id)
 
-  const handleCreateAccount = async () => {
+  const [txtServico, setTxtServico] = useState(account?.service || '')
+  const [txtUsername, setTxtUsername] = useState(account?.username || '')
+  const [txtPass, setTxtPass] = useState(account?.pass || '')
+  const [txtImgUrl, setTxtImgUrl] = useState(account?.logo_image || '')
+
+  const handleUpdateAccount = async () => {
     const account = {
       service: txtServico,
       username: txtUsername,
@@ -24,8 +26,8 @@ export default function Signup() {
       user_id: 1
     }
 
-    const response = await fetch('http://localhost:3000/account', {
-      method: 'POST',
+    const response = await fetch(`http://localhost:3000/account/${id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -33,7 +35,7 @@ export default function Signup() {
     })
     if (response.ok) {
       const data = await response.json()
-      addAccount(data.account)
+      updateAccount(data.account)
       router.back()
       return
     }
@@ -71,7 +73,7 @@ export default function Signup() {
         value={txtImgUrl}
         keyboardType='url'
       />
-      <Button onPress={handleCreateAccount}>Cadastrar</Button>
+      <Button onPress={handleUpdateAccount}></Button>
     </View>
   )
 }
