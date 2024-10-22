@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     footer: {
         padding: 15,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'burlywood'
+        alignItems: 'center'
     }
 })

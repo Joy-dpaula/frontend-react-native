@@ -10,7 +10,13 @@ export default function CardAccount({ id, service, userName, imgUrl, pass, accou
     return (
 
         <Pressable onPress={() => router.push({ pathname: '/showPass', params: { id } })}>
+
             <View style={styles.card}>
+
+                <Image
+                    style={styles.logo}
+                    source={imgUrl}
+                />
 
                 <View style={styles.content}>
 
@@ -21,7 +27,7 @@ export default function CardAccount({ id, service, userName, imgUrl, pass, accou
 
             </View>
 
-            <Image style={styles.logo} source={imgUrl} /></Pressable>
+        </Pressable>
     )
 }
 

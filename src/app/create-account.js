@@ -4,7 +4,7 @@ import Button from '../components/Button';
 import { useRouter } from 'expo-router';
 import { useAccountStore } from '../stores/useAccountStore';
 
-export default function Signup() {
+export default function CreateAccount() {
 
   const { addAccount } = useAccountStore()
 
@@ -44,7 +44,7 @@ export default function Signup() {
 
   return (
     <View style={styles.container}>
-      <Text style={{}}>Cadastro:</Text>
+      <Text>Serviço:</Text>
       <TextInput
         style={styles.input}
         onChangeText={setTxtServico}
