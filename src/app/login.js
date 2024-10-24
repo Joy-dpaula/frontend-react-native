@@ -4,11 +4,11 @@ import Footer from '../components/Footer';
 import Content from '../components/Content';
 import Header from '../components/Header';
 import Button from '../components/Button';
-import { useRouter } from 'expo-router'; 
+import { useRouter } from 'expo-router';
 
 export default function Login() {
 
-      const router = useRouter()
+    const router = useRouter()
 
     return (
         <ScrollView style={styles.container}>
@@ -18,7 +18,10 @@ export default function Login() {
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <Text style={{ fontsize: 30 }}>Login</Text>
+                <Text style={{
+                    fontSize: 25,
+                    padding: 20
+                }}>Login</Text>
 
                 <Button onPress={() => router.push('/signup')}>Criar conta</Button>
                 <Footer />

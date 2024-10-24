@@ -75,7 +75,7 @@ export default function SignUp(){
             value={txtPass}
             secureTextEntry={true}
           />
-        <Button onPress={handleCreateAccount}>Cadatrar</Button>
+        <Button onPress={handleCreateAccount}>Cadastrar</Button>
         </View>
     )
 }
