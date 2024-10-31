@@ -13,7 +13,7 @@ export default function RootLayout() {
         }}>
             <Stack.Screen name='index' options={{ headerShown: false }} />
             <Stack.Screen name='home' options={{ headerShown: false }} />
-            <Stack.Screen name='create-account' options={{ title: "Cadastre-se" }} />
+            <Stack.Screen name='create-account' options={{ title: "Cadastre a sua conta" }} />
             <Stack.Screen name='show-pass' options={{ title: "Ver senha"}} />
             <Stack.Screen name='update' options={{ title: "Editar conta"}} />
             <Stack.Screen name='signup' options={{ title: "Criar conta"}} />

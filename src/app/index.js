@@ -4,12 +4,26 @@ import Footer from '../components/Footer';
 import Content from '../components/Content';
 import Header from '../components/Header';
 import { useRouter } from 'expo-router';
+import { getObjectData } from '../utils/asyncStorage';
+import { useLoginStore } from '../stores/useLoginStore';
 
 export default function Init() {
 
   const router = useRouter()
+  const { login } = useLoginStore()
 
   useEffect(() => {
+    const checkUserLogged = async () => {
+      await getObjectData('userLogged')
+      if(userLogged){
+        login(userLogged)
+        router.replace('/home')
+      } else {
+        router.replace('/login')
+      }
+    }
+
+    checkUserLogged()
     setTimeout(() => router.replace('/login'), 2000)
   }, [])
 

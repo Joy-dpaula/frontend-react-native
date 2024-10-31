@@ -10,6 +10,8 @@ export default function CreateAccount() {
 
   const router = useRouter()
 
+  const {accessToken } = useLoginStore
+
   const [txtServico, setTxtServico] = useState('')
   const [txtUsername, setTxtUsername] = useState('')
   const [txtPass, setTxtPass] = useState('')
@@ -27,18 +29,19 @@ export default function CreateAccount() {
     const response = await fetch('http://localhost:3000/account', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
       },
       body: JSON.stringify(account)
     })
-    if (response.ok) {
-      const data = await response.json()
-      addAccount(data.account)
-      router.back()
-      return
-    }
-    console.log('Erro ao carregar accounts')
-    return
+    // if (response.ok) {
+    //   const data = await response.json()
+    //   addAccount(data.account)
+    //   router.back()
+    //   return
+    // }
+    // console.log('Erro ao carregar accounts')
+    // return
   }
 
 
